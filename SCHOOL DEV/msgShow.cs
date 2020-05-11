@@ -8,6 +8,7 @@ namespace SCHOOL_DEV
 {
     class msgShow
     {
+        string ss;
         public void Alert(string msg , Form_Alert.enumType type)
         {
             Form_Alert frm = new Form_Alert();
