@@ -1,0 +1,967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{418F5AB8-628C-4E60-906D-77BE40639091}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SCHOOL_DEV</RootNamespace>
+    <AssemblyName>SCHOOL DEV</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>D:\Bunifu_UI_v1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="FoxLearn.License">
+      <HintPath>..\..\..\..\..\..\..\FoxLearn.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivationKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivationKey.Designer.cs">
+      <DependentUpon>ActivationKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DGVPrinter.cs" />
+    <Compile Include="Form_Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Alert.Designer.cs">
+      <DependentUpon>Form_Alert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid_Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grid_Student.Designer.cs">
+      <DependentUpon>Grid_Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="home.Designer.cs">
+      <DependentUpon>home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="msgShow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\PrintAllStudentP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\PrintAllStudentP.Designer.cs">
+      <DependentUpon>PrintAllStudentP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_AP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_AP.Designer.cs">
+      <DependentUpon>Report_AP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_PrintAllStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_PrintAllStudent.Designer.cs">
+      <DependentUpon>Report_PrintAllStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_PrintClassPaid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_PrintClassPaid.Designer.cs">
+      <DependentUpon>Report_PrintClassPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_PrintClassStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_PrintClassStudent.Designer.cs">
+      <DependentUpon>Report_PrintClassStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_PrintDatePaid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_PrintDatePaid.Designer.cs">
+      <DependentUpon>Report_PrintDatePaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_PrintNamePaid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_PrintNamePaid.Designer.cs">
+      <DependentUpon>Report_PrintNamePaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Report_PrintNameStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\Report_PrintNameStudent.Designer.cs">
+      <DependentUpon>Report_PrintNameStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="start.Designer.cs">
+      <DependentUpon>start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AboutSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AboutSystem.Designer.cs">
+      <DependentUpon>AboutSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\addYear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\addYear.Designer.cs">
+      <DependentUpon>addYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ADD_class.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ADD_class.Designer.cs">
+      <DependentUpon>ADD_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ADD_Paid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ADD_Paid.Designer.cs">
+      <DependentUpon>ADD_Paid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\add_student.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\add_student.Designer.cs">
+      <DependentUpon>add_student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\add_Teacher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\add_Teacher.Designer.cs">
+      <DependentUpon>add_Teacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ADD_Users.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ADD_Users.Designer.cs">
+      <DependentUpon>ADD_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ALLStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ALLStudent.Designer.cs">
+      <DependentUpon>ALLStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ALL_class.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ALL_class.Designer.cs">
+      <DependentUpon>ALL_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ALL_Teacher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ALL_Teacher.Designer.cs">
+      <DependentUpon>ALL_Teacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AP.Designer.cs">
+      <DependentUpon>AP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BalanceSheet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BalanceSheet.Designer.cs">
+      <DependentUpon>BalanceSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BusStreet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\BusStreet.Designer.cs">
+      <DependentUpon>BusStreet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Comf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Comf.Designer.cs">
+      <DependentUpon>Comf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\controls_user.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\controls_user.Designer.cs">
+      <DependentUpon>controls_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EndSalary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\EndSalary.Designer.cs">
+      <DependentUpon>EndSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\newSemester.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\newSemester.Designer.cs">
+      <DependentUpon>newSemester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NewYear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NewYear.Designer.cs">
+      <DependentUpon>NewYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PaidKA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PaidKA.Designer.cs">
+      <DependentUpon>PaidKA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintAllPaid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintAllPaid.Designer.cs">
+      <DependentUpon>PrintAllPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintAllStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintAllStudent.Designer.cs">
+      <DependentUpon>PrintAllStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintClassPaid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintClassPaid.Designer.cs">
+      <DependentUpon>PrintClassPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintClassStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintClassStudent.Designer.cs">
+      <DependentUpon>PrintClassStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintDatePaid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintDatePaid.Designer.cs">
+      <DependentUpon>PrintDatePaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Quary_UCExpancess.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Quary_UCExpancess.Designer.cs">
+      <DependentUpon>Quary_UCExpancess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\printExpYear.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\printExpYear.Designer.cs">
+      <DependentUpon>printExpYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintNamePaid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintNamePaid.Designer.cs">
+      <DependentUpon>PrintNamePaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintNameStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintNameStudent.Designer.cs">
+      <DependentUpon>PrintNameStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid1.Designer.cs">
+      <DependentUpon>PrintPaid1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid10.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid10.Designer.cs">
+      <DependentUpon>PrintPaid10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid11.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid11.Designer.cs">
+      <DependentUpon>PrintPaid11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid12.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid12.Designer.cs">
+      <DependentUpon>PrintPaid12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid2.Designer.cs">
+      <DependentUpon>PrintPaid2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid3.Designer.cs">
+      <DependentUpon>PrintPaid3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid4.Designer.cs">
+      <DependentUpon>PrintPaid4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid5.Designer.cs">
+      <DependentUpon>PrintPaid5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid6.Designer.cs">
+      <DependentUpon>PrintPaid6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid7.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid7.Designer.cs">
+      <DependentUpon>PrintPaid7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid8.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid8.Designer.cs">
+      <DependentUpon>PrintPaid8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid9.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PrintPaid9.Designer.cs">
+      <DependentUpon>PrintPaid9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\quary_class.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\quary_class.Designer.cs">
+      <DependentUpon>quary_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\quary_paid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\quary_paid.Designer.cs">
+      <DependentUpon>quary_paid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\quary_salary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\quary_salary.Designer.cs">
+      <DependentUpon>quary_salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\quary_student.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\quary_student.Designer.cs">
+      <DependentUpon>quary_student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\quary_Teacher.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\quary_Teacher.Designer.cs">
+      <DependentUpon>quary_Teacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Quary_UCRevenue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Quary_UCRevenue.Designer.cs">
+      <DependentUpon>Quary_UCRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\reveuneSChool.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\reveuneSChool.Designer.cs">
+      <DependentUpon>reveuneSChool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCDefultPaid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCDefultPaid.Designer.cs">
+      <DependentUpon>UCDefultPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCExpancess.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCExpancess.Designer.cs">
+      <DependentUpon>UCExpancess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCExpensesName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCExpensesName.Designer.cs">
+      <DependentUpon>UCExpensesName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCRevenueName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCRevenueName.Designer.cs">
+      <DependentUpon>UCRevenueName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCReveune.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCReveune.Designer.cs">
+      <DependentUpon>UCReveune.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCSettings.Designer.cs">
+      <DependentUpon>UCSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UC_Home.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UC_Home.Designer.cs">
+      <DependentUpon>UC_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UP.Designer.cs">
+      <DependentUpon>UP.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ActivationKey.resx">
+      <DependentUpon>ActivationKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Alert.resx">
+      <DependentUpon>Form_Alert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid_Student.resx">
+      <DependentUpon>Grid_Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="home.resx">
+      <DependentUpon>home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RDLC\AP.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintAllPaid.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintAllStudent.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintClassPaid.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintClassStudent.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintDatePaid.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintNamePaid.rdlc" />
+    <EmbeddedResource Include="RDLC\PrintNameStudent.rdlc" />
+    <EmbeddedResource Include="Report\PrintAllStudentP.resx">
+      <DependentUpon>PrintAllStudentP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_AP.resx">
+      <DependentUpon>Report_AP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_PrintAllStudent.resx">
+      <DependentUpon>Report_PrintAllStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_PrintClassPaid.resx">
+      <DependentUpon>Report_PrintClassPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_PrintClassStudent.resx">
+      <DependentUpon>Report_PrintClassStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_PrintDatePaid.resx">
+      <DependentUpon>Report_PrintDatePaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_PrintNamePaid.resx">
+      <DependentUpon>Report_PrintNamePaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Report_PrintNameStudent.resx">
+      <DependentUpon>Report_PrintNameStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="start.resx">
+      <DependentUpon>start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AboutSystem.resx">
+      <DependentUpon>AboutSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\addYear.resx">
+      <DependentUpon>addYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ADD_class.resx">
+      <DependentUpon>ADD_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ADD_Paid.resx">
+      <DependentUpon>ADD_Paid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\add_student.resx">
+      <DependentUpon>add_student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\add_Teacher.resx">
+      <DependentUpon>add_Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ADD_Users.resx">
+      <DependentUpon>ADD_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ALLStudent.resx">
+      <DependentUpon>ALLStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ALL_class.resx">
+      <DependentUpon>ALL_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ALL_Teacher.resx">
+      <DependentUpon>ALL_Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AP.resx">
+      <DependentUpon>AP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BalanceSheet.resx">
+      <DependentUpon>BalanceSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\BusStreet.resx">
+      <DependentUpon>BusStreet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Comf.resx">
+      <DependentUpon>Comf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\controls_user.resx">
+      <DependentUpon>controls_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\EndSalary.resx">
+      <DependentUpon>EndSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\newSemester.resx">
+      <DependentUpon>newSemester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\NewYear.resx">
+      <DependentUpon>NewYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PaidKA.resx">
+      <DependentUpon>PaidKA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintAllPaid.resx">
+      <DependentUpon>PrintAllPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintAllStudent.resx">
+      <DependentUpon>PrintAllStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintClassPaid.resx">
+      <DependentUpon>PrintClassPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintClassStudent.resx">
+      <DependentUpon>PrintClassStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintDatePaid.resx">
+      <DependentUpon>PrintDatePaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Quary_UCExpancess.resx">
+      <DependentUpon>Quary_UCExpancess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\printExpYear.resx">
+      <DependentUpon>printExpYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintNamePaid.resx">
+      <DependentUpon>PrintNamePaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintNameStudent.resx">
+      <DependentUpon>PrintNameStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid1.resx">
+      <DependentUpon>PrintPaid1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid10.resx">
+      <DependentUpon>PrintPaid10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid11.resx">
+      <DependentUpon>PrintPaid11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid12.resx">
+      <DependentUpon>PrintPaid12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid2.resx">
+      <DependentUpon>PrintPaid2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid3.resx">
+      <DependentUpon>PrintPaid3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid4.resx">
+      <DependentUpon>PrintPaid4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid5.resx">
+      <DependentUpon>PrintPaid5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid6.resx">
+      <DependentUpon>PrintPaid6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid7.resx">
+      <DependentUpon>PrintPaid7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid8.resx">
+      <DependentUpon>PrintPaid8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PrintPaid9.resx">
+      <DependentUpon>PrintPaid9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\quary_class.resx">
+      <DependentUpon>quary_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\quary_paid.resx">
+      <DependentUpon>quary_paid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\quary_salary.resx">
+      <DependentUpon>quary_salary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\quary_student.resx">
+      <DependentUpon>quary_student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\quary_Teacher.resx">
+      <DependentUpon>quary_Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Quary_UCRevenue.resx">
+      <DependentUpon>Quary_UCRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\reveuneSChool.resx">
+      <DependentUpon>reveuneSChool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCDefultPaid.resx">
+      <DependentUpon>UCDefultPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCExpancess.resx">
+      <DependentUpon>UCExpancess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCExpensesName.resx">
+      <DependentUpon>UCExpensesName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCRevenueName.resx">
+      <DependentUpon>UCRevenueName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCReveune.resx">
+      <DependentUpon>UCReveune.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCSettings.resx">
+      <DependentUpon>UCSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UC_Home.resx">
+      <DependentUpon>UC_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UP.resx">
+      <DependentUpon>UP.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iis.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blackboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mobile-phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-button-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_undo_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_add_user_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_school_director_male_skin_type_4_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_conference_call_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_add_user_group_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_student_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_students_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_add_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_classroom_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_class_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_no_hidden_fee_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_no_hidden_fee_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_refund_2_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_expensive_2_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_pay_32px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_cash_in_hand_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_ruble_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_british_pound_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_payroll_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_get_cash_filled_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_payroll_32px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_name_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_calendar_1_32px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_contacts_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_commercial_development_management_filled_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_online_group_studying_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nahr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_shutdown_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_add_database_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_upload_to_cloud_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_up_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_filled_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KZ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\growth.png" />
+    <None Include="Resources\bus.png" />
+    <None Include="Resources\bus %281%29.png" />
+    <None Include="Resources\new.png" />
+    <None Include="Resources\logout.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Success.png" />
+    <None Include="Resources\Warning.png" />
+    <None Include="Resources\settings_40px.png" />
+    <None Include="Resources\settings_50px.png" />
+    <None Include="Resources\settings_32px.png" />
+    <None Include="Resources\search_32px.png" />
+    <None Include="Resources\view_file_32px.png" />
+    <None Include="Resources\q7Q6Y4s.png" />
+    <None Include="Resources\KZ1.png" />
+    <None Include="Resources\employee1.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\bonus.png" />
+    <None Include="Resources\revenue.png" />
+    <None Include="Resources\expense.png" />
+    <None Include="Resources\cancel_25px.png" />
+    <None Include="Resources\ok_45px.png" />
+    <None Include="Resources\Info.png" />
+    <None Include="Resources\Error.png" />
+    <Content Include="Resources\s1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
