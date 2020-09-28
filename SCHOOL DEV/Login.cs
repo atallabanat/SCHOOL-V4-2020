@@ -1,4 +1,4 @@
-﻿using FoxLearn.License;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -103,38 +103,38 @@ namespace SCHOOL_DEV
                 con.Close();
             }
         }
-        private void register()
-        {
-            string id = ComputerInfo.GetComputerId();
-            KeyManager km = new KeyManager(id);
-            LicenseInfo lic = new LicenseInfo();
-            int value = km.LoadSuretyFile(string.Format(@"{0}\Key.lic", Path.GetPathRoot(Environment.SystemDirectory)), ref lic);
-            string ProductKey = lic.ProductKey;
-            if (km.ValidKey(ref ProductKey))
-            {
-                KeyValuesClass kv = new KeyValuesClass();
-                if (km.DisassembleKey(ProductKey, ref kv))
-                {
+        //private void register()
+        //{
+        //    string id = ComputerInfo.GetComputerId();
+        //    KeyManager km = new KeyManager(id);
+        //    LicenseInfo lic = new LicenseInfo();
+        //    int value = km.LoadSuretyFile(string.Format(@"{0}\Key.lic", Path.GetPathRoot(Environment.SystemDirectory)), ref lic);
+        //    string ProductKey = lic.ProductKey;
+        //    if (km.ValidKey(ref ProductKey))
+        //    {
+        //        KeyValuesClass kv = new KeyValuesClass();
+        //        if (km.DisassembleKey(ProductKey, ref kv))
+        //        {
                     
-                }
-                else
-                {
-                    this.Hide();
-                    ActivationKey activationKey = new ActivationKey();
-                    activationKey.Show();
-                }
-            }
-            else
-            {
-                this.Hide();
-                ActivationKey activationKey = new ActivationKey();
-                activationKey.Show();
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            this.Hide();
+        //            ActivationKey activationKey = new ActivationKey();
+        //            activationKey.Show();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        this.Hide();
+        //        ActivationKey activationKey = new ActivationKey();
+        //        activationKey.Show();
+        //    }
+        //}
         private void Login_Load(object sender, EventArgs e)
         {
 
-            register();
+            //register();
             label6.Text = Program.School_Name;
             Year();
             Semester();

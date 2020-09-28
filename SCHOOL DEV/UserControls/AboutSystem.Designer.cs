@@ -168,7 +168,7 @@
             this.Name = "AboutSystem";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Size = new System.Drawing.Size(1136, 631);
-            this.Load += new System.EventHandler(this.AboutSystem_Load);
+            //this.Load += new System.EventHandler(this.AboutSystem_Load);3
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

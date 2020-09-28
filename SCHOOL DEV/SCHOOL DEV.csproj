@@ -53,10 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>D:\Bunifu_UI_v1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
-    </Reference>
-    <Reference Include="FoxLearn.License">
-      <HintPath>..\..\..\..\..\..\..\FoxLearn.License.dll</HintPath>
+      <HintPath>D:\Tools Visual Staudio\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>

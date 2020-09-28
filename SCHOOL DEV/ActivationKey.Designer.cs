@@ -183,7 +183,6 @@
             this.button1.TabIndex = 32;
             this.button1.Text = "تفعيل";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -236,7 +235,6 @@
             this.cboLicenseType.Name = "cboLicenseType";
             this.cboLicenseType.Size = new System.Drawing.Size(307, 21);
             this.cboLicenseType.TabIndex = 46;
-            this.cboLicenseType.SelectedIndexChanged += new System.EventHandler(this.cboLicenseType_SelectedIndexChanged);
             // 
             // label5
             // 

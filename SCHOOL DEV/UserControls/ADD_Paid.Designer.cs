@@ -48,17 +48,20 @@
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.checkDefultPaid = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelControls = new System.Windows.Forms.Panel();
+            this.txtBondNo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmIDPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNamePaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAmountPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDateAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelControls = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.clmBondNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox14.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,7 +70,7 @@
             // textBox20
             // 
             this.textBox20.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.textBox20.Location = new System.Drawing.Point(520, 186);
+            this.textBox20.Location = new System.Drawing.Point(520, 191);
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new System.Drawing.Size(264, 21);
             this.textBox20.TabIndex = 45;
@@ -77,7 +80,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(792, 189);
+            this.label10.Location = new System.Drawing.Point(792, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 16);
             this.label10.TabIndex = 4;
@@ -86,7 +89,7 @@
             // textBox19
             // 
             this.textBox19.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox19.Location = new System.Drawing.Point(520, 142);
+            this.textBox19.Location = new System.Drawing.Point(520, 157);
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(264, 21);
             this.textBox19.TabIndex = 3;
@@ -96,7 +99,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(792, 145);
+            this.label11.Location = new System.Drawing.Point(792, 160);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 16);
             this.label11.TabIndex = 2;
@@ -234,6 +237,8 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.txtBondNo);
+            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.checkDefultPaid);
             this.groupBox3.Controls.Add(this.dataGridView1);
@@ -259,11 +264,24 @@
             this.groupBox3.Text = "معلومات الدفع";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Maroon;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.Snow;
+            this.button3.Location = new System.Drawing.Point(601, 559);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(111, 33);
+            this.button3.TabIndex = 50;
+            this.button3.Text = "حذف";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // checkDefultPaid
             // 
             this.checkDefultPaid.AutoSize = true;
             this.checkDefultPaid.ForeColor = System.Drawing.Color.Maroon;
-            this.checkDefultPaid.Location = new System.Drawing.Point(414, 93);
+            this.checkDefultPaid.Location = new System.Drawing.Point(414, 122);
             this.checkDefultPaid.Name = "checkDefultPaid";
             this.checkDefultPaid.Size = new System.Drawing.Size(85, 19);
             this.checkDefultPaid.TabIndex = 49;
@@ -293,7 +311,8 @@
             this.clmIDPaid,
             this.clmNamePaid,
             this.clmAmountPaid,
-            this.clmDateAmount});
+            this.clmDateAmount,
+            this.clmBondNo});
             this.dataGridView1.Location = new System.Drawing.Point(319, 231);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -310,6 +329,54 @@
             this.dataGridView1.TabIndex = 48;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(520, 120);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(264, 23);
+            this.comboBox2.TabIndex = 47;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(792, 123);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 16);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "تحديد الدفعة :";
+            // 
+            // panelControls
+            // 
+            this.panelControls.BackColor = System.Drawing.Color.White;
+            this.panelControls.Location = new System.Drawing.Point(3, 526);
+            this.panelControls.Name = "panelControls";
+            this.panelControls.Size = new System.Drawing.Size(135, 92);
+            this.panelControls.TabIndex = 40;
+            this.panelControls.Visible = false;
+            // 
+            // txtBondNo
+            // 
+            this.txtBondNo.BackColor = System.Drawing.SystemColors.Control;
+            this.txtBondNo.Location = new System.Drawing.Point(520, 81);
+            this.txtBondNo.Name = "txtBondNo";
+            this.txtBondNo.Size = new System.Drawing.Size(264, 21);
+            this.txtBondNo.TabIndex = 52;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(792, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 16);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "رقم السند :";
             // 
             // clmID
             // 
@@ -351,48 +418,12 @@
             this.clmDateAmount.Name = "clmDateAmount";
             this.clmDateAmount.ReadOnly = true;
             // 
-            // comboBox2
+            // clmBondNo
             // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(520, 91);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(264, 23);
-            this.comboBox2.TabIndex = 47;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(792, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 16);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "تحديد الدفعة :";
-            // 
-            // panelControls
-            // 
-            this.panelControls.BackColor = System.Drawing.Color.White;
-            this.panelControls.Location = new System.Drawing.Point(3, 526);
-            this.panelControls.Name = "panelControls";
-            this.panelControls.Size = new System.Drawing.Size(135, 92);
-            this.panelControls.TabIndex = 40;
-            this.panelControls.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Maroon;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Snow;
-            this.button3.Location = new System.Drawing.Point(601, 559);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 33);
-            this.button3.TabIndex = 50;
-            this.button3.Text = "حذف";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.clmBondNo.DataPropertyName = "BondNo";
+            this.clmBondNo.HeaderText = "رقم السند";
+            this.clmBondNo.Name = "clmBondNo";
+            this.clmBondNo.ReadOnly = true;
             // 
             // ADD_Paid
             // 
@@ -434,12 +465,15 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkDefultPaid;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtBondNo;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmID;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmIDPaid;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNamePaid;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmAmountPaid;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDateAmount;
-        private System.Windows.Forms.CheckBox checkDefultPaid;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmBondNo;
     }
 }

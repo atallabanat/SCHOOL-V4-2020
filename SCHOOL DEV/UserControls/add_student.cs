@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 namespace SCHOOL_DEV.UserControls
 {
     public partial class add_student : UserControl
@@ -25,7 +19,7 @@ namespace SCHOOL_DEV.UserControls
 
         public add_student()
         {
-            add_Student = this; 
+            add_Student = this;
             InitializeComponent();
         }
         public void selectGrid()
@@ -35,7 +29,7 @@ namespace SCHOOL_DEV.UserControls
                 con.Open();
                 SqlCommand cmd = new SqlCommand("select * from student where ID=@ID and YaerSemesterID=@YaerSemesterID", con);
                 cmd.Parameters.AddWithValue("@ID", ID);
-                cmd.Parameters.AddWithValue("@YaerSemesterID",Program.ID_Year);
+                cmd.Parameters.AddWithValue("@YaerSemesterID", Program.ID_Year);
                 SqlDataReader dr;
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
@@ -44,6 +38,7 @@ namespace SCHOOL_DEV.UserControls
                     date_registration.Value = Convert.ToDateTime(dr["Date_Registration"].ToString());
                     combo_Class.SelectedValue = dr["IDclass"].ToString();
                     text_IDNumber.Text = dr["IDNumber"].ToString();
+                    txtContractNumber.Text = dr["ContractNumber"].ToString();
                     text_Status.Text = dr["Status"].ToString();
                     text_PhoneDAD.Text = dr["PhoneDAD"].ToString();
                     text_PhoneMAM.Text = dr["PhoneMAM"].ToString();
@@ -112,16 +107,16 @@ namespace SCHOOL_DEV.UserControls
                     text_Note.Text = dr["Note"].ToString();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
             finally
             {
-                
+
                 con.Close();
             }
-            
+
         }
         private void add_student_Load(object sender, EventArgs e)
         {
@@ -180,66 +175,66 @@ namespace SCHOOL_DEV.UserControls
                 }
                 con.Close();
                 if (text_Name.Text == "")
-                    {
-                         msg.Alert("يرجى ادخال اسم الطالب", Form_Alert.enumType.Warning);                    
-                        return;
-                    }
+                {
+                    msg.Alert("يرجى ادخال اسم الطالب", Form_Alert.enumType.Warning);
+                    return;
+                }
 
-                    if (combo_Class.SelectedIndex == -1)
-                    {
-                      msg.Alert("يرجى ادخال الصف الدراسي", Form_Alert.enumType.Warning);
-                      return;
-                    }
-                    if (combo_gender.SelectedIndex == -1)
-                    {                       
-                          msg.Alert("يرجى ادخال الجنس", Form_Alert.enumType.Warning);
-                          return;
-                    }
-                    if (textALLPaid1.Text == "")
-                    {
-                         msg.Alert("يرجى ادخال الدفعة الأولى", Form_Alert.enumType.Warning);                    
-                        return;
-                    }
-                    if (text_Paid2.Text == "")
-                    {                        
-                         msg.Alert("يرجى ادخال الدفعة الثانية", Form_Alert.enumType.Warning);
-                          return;
-                    }
-                    if (text_Paid3.Text == "")
-                    {                        
-                         msg.Alert("يرجى ادخال الدفعة الثالثة", Form_Alert.enumType.Warning);
-                         return;
-                    }
-                    if (text_Paid4.Text == "")
-                    {
-                           msg.Alert("يرجى ادخال الدفعة الرابعة", Form_Alert.enumType.Warning);
-                              return;
-                    }
-                    if (text_Paid5.Text == "")
-                    {
-                          msg.Alert("يرجى ادخال الدفعة الخامسة", Form_Alert.enumType.Warning);
-                           return;
-                    }
-                    if (text_Paid6.Text == "")
-                    {
-                          msg.Alert("يرجى ادخال الدفعة السادسة", Form_Alert.enumType.Warning);
-                            return;
-                    }
-                    if (text_Paid7.Text == "")
-                    {
-                           msg.Alert("يرجى ادخال الدفعة السابعة", Form_Alert.enumType.Warning);
-                             return;
-                    }
-                    if (text_Paid8.Text == "")
-                    {
-                        msg.Alert("يرجى ادخال الدفعة الثامنة", Form_Alert.enumType.Warning);
-                           return;
-                    }
-                    if (text_Paid9.Text == "")
-                    {
-                          msg.Alert("يرجى ادخال الدفعة التاسعة", Form_Alert.enumType.Warning);
-                         return;
-                    }
+                if (combo_Class.SelectedIndex == -1)
+                {
+                    msg.Alert("يرجى ادخال الصف الدراسي", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (combo_gender.SelectedIndex == -1)
+                {
+                    msg.Alert("يرجى ادخال الجنس", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (textALLPaid1.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة الأولى", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid2.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة الثانية", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid3.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة الثالثة", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid4.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة الرابعة", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid5.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة الخامسة", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid6.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة السادسة", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid7.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة السابعة", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid8.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة الثامنة", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_Paid9.Text == "")
+                {
+                    msg.Alert("يرجى ادخال الدفعة التاسعة", Form_Alert.enumType.Warning);
+                    return;
+                }
                 else
                 {
                     con.Open();
@@ -247,7 +242,8 @@ namespace SCHOOL_DEV.UserControls
 
                     SqlCommand cmd1 = con.CreateCommand();
                     cmd1.CommandType = CommandType.Text;
-                    cmd1.CommandText = "insert into student values (@name, @gender, @Date_Registration,@IDClass ,@class, @IDNumber, @Status, @PhoneDAD, @PhoneMAM, @Social, @Profession_DAD, @Profession_MAM, @Paid1, @ALLPaid1, @Paid_uniform, @Paid_Bock, @Paid_transport, @Paid2, @Paid3, @Paid4, @Paid5, @Paid6, @Paid7, @Paid8, @Paid9, @PaidAll, @PaidTotal, @Flag_uniform, @Flag_Bock, @Flag_transport, @Region, @place, @Street, @Note, @YaerSemesterID)  ";
+                    cmd1.CommandText = "insert into student values (@ContractNumber,@name, @gender, @Date_Registration,@IDClass ,@class, @IDNumber, @Status, @PhoneDAD, @PhoneMAM, @Social, @Profession_DAD, @Profession_MAM, @Paid1, @ALLPaid1, @Paid_uniform, @Paid_Bock, @Paid_transport, @Paid2, @Paid3, @Paid4, @Paid5, @Paid6, @Paid7, @Paid8, @Paid9, @PaidAll, @PaidTotal, @Flag_uniform, @Flag_Bock, @Flag_transport, @Region, @place, @Street, @Note, @YaerSemesterID)  ";
+                    cmd1.Parameters.AddWithValue("@ContractNumber", txtContractNumber.Text);
                     cmd1.Parameters.AddWithValue("@name", text_Name.Text);
                     cmd1.Parameters.AddWithValue("@gender", combo_gender.SelectedValue);
                     cmd1.Parameters.AddWithValue("@Date_Registration", date_registration.Value);
@@ -277,7 +273,7 @@ namespace SCHOOL_DEV.UserControls
                     cmd1.Parameters.AddWithValue("@Profession_MAM", text_Profession_MAM.Text);
                     cmd1.Parameters.AddWithValue("@Paid1", text_Paid1.Text);
                     cmd1.Parameters.AddWithValue("@ALLPaid1", textALLPaid1.Text);
-                    if(text_uniform.Text==string.Empty)
+                    if (text_uniform.Text == string.Empty)
                     {
                         cmd1.Parameters.AddWithValue("@Paid_uniform", "0");
                     }
@@ -304,7 +300,7 @@ namespace SCHOOL_DEV.UserControls
                     {
                         cmd1.Parameters.AddWithValue("@Paid_transport", text_transport.Text);
                     }
-                 
+
                     cmd1.Parameters.AddWithValue("@Paid2", text_Paid2.Text);
                     cmd1.Parameters.AddWithValue("@Paid3", text_Paid3.Text);
                     cmd1.Parameters.AddWithValue("@Paid4", text_Paid4.Text);
@@ -327,7 +323,7 @@ namespace SCHOOL_DEV.UserControls
 
 
 
-                    msg.Alert("تم إضافة الطالب بنجاح", Form_Alert.enumType.Success);                   
+                    msg.Alert("تم إضافة الطالب بنجاح", Form_Alert.enumType.Success);
                     ClearScreen();
 
 
@@ -360,6 +356,7 @@ namespace SCHOOL_DEV.UserControls
             text_uniform.Text = "";
             text_Bock.Text = "";
             text_transport.Text = "";
+            txtContractNumber.Text = "";
             text_Paid1.Text = "";
             text_Paid2.Text = "";
             text_Paid3.Text = "";
@@ -383,7 +380,7 @@ namespace SCHOOL_DEV.UserControls
             text_Note.Text = "";
             textALLPaid1.Text = "";
         }
-     
+
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -408,8 +405,8 @@ namespace SCHOOL_DEV.UserControls
                         cmd2.Parameters.AddWithValue("@YaerSemesterID", Program.ID_Year);
                         cmd2.ExecuteNonQuery();
 
-                        msg.Alert("تم حذف الطالب بنجاح",Form_Alert.enumType.Success);                        
-                        button4_Click(sender,e);
+                        msg.Alert("تم حذف الطالب بنجاح", Form_Alert.enumType.Success);
+                        button4_Click(sender, e);
                     }
                     else
                     {
@@ -417,7 +414,7 @@ namespace SCHOOL_DEV.UserControls
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 msg.Alert("لم تتم عملية حذف الطالب ، الرجاء المحاولة مره اخرى" + ex.Message, Form_Alert.enumType.Error);
             }
@@ -503,9 +500,10 @@ namespace SCHOOL_DEV.UserControls
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = @"UPDATE       student
-                                   SET           name =@name, gender =@gender, Date_Registration =@Date_Registration,IDClass=@IDClass, class =@class, IDNumber =@IDNumber, Status =@Status, PhoneDAD =@PhoneDAD, PhoneMAM =@PhoneMAM, Social =@Social, Profession_DAD =@Profession_DAD, Profession_MAM =@Profession_MAM, Paid1 =@Paid1, ALLPaid1 =@ALLPaid1, Paid_uniform =@Paid_uniform, Paid_Bock =@Paid_Bock, Paid_transport =@Paid_transport, 
+                                   SET   ContractNumber=@ContractNumber   ,     name =@name, gender =@gender, Date_Registration =@Date_Registration,IDClass=@IDClass, class =@class, IDNumber =@IDNumber, Status =@Status, PhoneDAD =@PhoneDAD, PhoneMAM =@PhoneMAM, Social =@Social, Profession_DAD =@Profession_DAD, Profession_MAM =@Profession_MAM, Paid1 =@Paid1, ALLPaid1 =@ALLPaid1, Paid_uniform =@Paid_uniform, Paid_Bock =@Paid_Bock, Paid_transport =@Paid_transport, 
                                                 Paid2 =@Paid2, Paid3 =@Paid3, Paid4 =@Paid4, Paid5 =@Paid5, Paid6 =@Paid6, Paid7 =@Paid7, Paid8 =@Paid8, Paid9 =@Paid9, PaidAll =@PaidAll, PaidTotal =@PaidTotal, Flag_uniform =@Flag_uniform, Flag_Bock =@Flag_Bock, Flag_transport =@Flag_transport, Region =@Region, place =@place, Street =@Street, Note =@Note where ID=@ID ";
                 cmd.Parameters.AddWithValue("@ID", ID);
+                cmd.Parameters.AddWithValue("@ContractNumber", txtContractNumber.Text);
                 cmd.Parameters.AddWithValue("@name", text_Name.Text);
                 cmd.Parameters.AddWithValue("@gender", combo_gender.SelectedValue);
                 cmd.Parameters.AddWithValue("@Date_Registration", date_registration.Value);
@@ -583,7 +581,7 @@ namespace SCHOOL_DEV.UserControls
                 msg.Alert("تم تعديل بيانات الطالب بنجاح", Form_Alert.enumType.Success);
                 button4_Click(sender, e);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 msg.Alert("لم تتم عملية التعديل" + ex.Message, Form_Alert.enumType.Error);
             }
@@ -592,10 +590,10 @@ namespace SCHOOL_DEV.UserControls
                 con.Close();
             }
 
- 
+
         }
 
-    
+
 
         private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -618,7 +616,7 @@ namespace SCHOOL_DEV.UserControls
             if (check_uniform.Checked == true)
             {
                 Flag_uniform = true;
-                
+
                 text_uniform.Enabled = true;
             }
             else
@@ -666,7 +664,7 @@ namespace SCHOOL_DEV.UserControls
 
         private void text_Paid2_Leave(object sender, EventArgs e)
         {
-            if(text_Paid2.Text==string.Empty)
+            if (text_Paid2.Text == string.Empty)
             {
                 text_Paid2.Text = "0";
             }
@@ -723,11 +721,11 @@ namespace SCHOOL_DEV.UserControls
 
         private void SumPaidALL1()
         {
-            double Paid1=0;
-            double uniform=0;
-            double Bock=0;
-            double transport=0;
-            double PaidALL1=0;
+            double Paid1 = 0;
+            double uniform = 0;
+            double Bock = 0;
+            double transport = 0;
+            double PaidALL1 = 0;
             try
             {
 
@@ -744,13 +742,13 @@ namespace SCHOOL_DEV.UserControls
                 {
                     Bock = Convert.ToDouble(text_Bock.Text);
                 }
-                if(text_transport.Text!="")
+                if (text_transport.Text != "")
                 {
-                    transport =Convert.ToDouble(text_transport.Text);
+                    transport = Convert.ToDouble(text_transport.Text);
                 }
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Paid1 = 0;
                 uniform = 0;
@@ -797,7 +795,7 @@ namespace SCHOOL_DEV.UserControls
             double Paid9 = 0;
             try
             {
-               
+
 
                 if (textALLPaid1.Text != string.Empty)
                 {
@@ -836,7 +834,7 @@ namespace SCHOOL_DEV.UserControls
                     Paid9 = Convert.ToDouble(text_Paid9.Text);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Paid1 = 0;
                 Paid2 = 0;
@@ -916,7 +914,7 @@ namespace SCHOOL_DEV.UserControls
 
         private void date_registration_ValueChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -1045,9 +1043,9 @@ namespace SCHOOL_DEV.UserControls
         {
             try
             {
-                if(combo_Class.SelectedIndex==-1)
+                if (combo_Class.SelectedIndex == -1)
                 {
-                    MessageBox.Show("يرجى تحديد الصف الدراسي للطالب أولا ","الصف الدراسي",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("يرجى تحديد الصف الدراسي للطالب أولا ", "الصف الدراسي", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     combo_Class.Focus();
                     return;
                 }

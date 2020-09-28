@@ -111,6 +111,8 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
             this.text_Note = new System.Windows.Forms.TextBox();
+            this.txtContractNumber = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -536,6 +538,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtContractNumber);
+            this.tabPage1.Controls.Add(this.label32);
             this.tabPage1.Controls.Add(this.btn_View_Invoice_No);
             this.tabPage1.Controls.Add(this.text_Name);
             this.tabPage1.Controls.Add(this.label1);
@@ -1063,6 +1067,24 @@
             this.text_Note.Size = new System.Drawing.Size(1009, 307);
             this.text_Note.TabIndex = 2;
             // 
+            // txtContractNumber
+            // 
+            this.txtContractNumber.Location = new System.Drawing.Point(80, 73);
+            this.txtContractNumber.MaxLength = 30;
+            this.txtContractNumber.Name = "txtContractNumber";
+            this.txtContractNumber.Size = new System.Drawing.Size(150, 23);
+            this.txtContractNumber.TabIndex = 47;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label32.Location = new System.Drawing.Point(233, 76);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(74, 16);
+            this.label32.TabIndex = 49;
+            this.label32.Text = "رقم العقد :";
+            // 
             // add_student
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1181,5 +1203,7 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.TextBox txtContractNumber;
+        private System.Windows.Forms.Label label32;
     }
 }

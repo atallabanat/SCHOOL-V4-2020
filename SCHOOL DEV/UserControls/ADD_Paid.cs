@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace SCHOOL_DEV.UserControls
 {
@@ -77,7 +71,7 @@ namespace SCHOOL_DEV.UserControls
             }
             catch
             {
-                
+
                 return false;
             }
             finally
@@ -85,9 +79,9 @@ namespace SCHOOL_DEV.UserControls
                 con.Close();
             }
         }
-       public bool SumPaidStudentData()
+        public bool SumPaidStudentData()
         {
-            
+
             try
             {
 
@@ -122,9 +116,9 @@ namespace SCHOOL_DEV.UserControls
                 }
                 return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                
+
                 return false;
             }
             finally
@@ -148,12 +142,12 @@ namespace SCHOOL_DEV.UserControls
                 SqlCommand cmd = con.CreateCommand();
 
                 SqlDataAdapter da = new SqlDataAdapter();
-                da = new SqlDataAdapter("select ID,name from student where YaerSemesterID="+Program.ID_Year+" ", con);
+                da = new SqlDataAdapter("select ID,name from student where YaerSemesterID=" + Program.ID_Year + " order by name", con);
                 DataSet ds = new DataSet();
                 ds = new DataSet();
                 da.Fill(ds);
                 count = 1;
-                comboBox1.DataSource = ds.Tables[0];                
+                comboBox1.DataSource = ds.Tables[0];
                 comboBox1.DisplayMember = "name";
                 comboBox1.ValueMember = "ID";
                 comboBox1.SelectedIndex = -1;
@@ -164,20 +158,20 @@ namespace SCHOOL_DEV.UserControls
 
                 SqlCommand cmd2 = con.CreateCommand();
 
-            SqlDataAdapter da2 = new SqlDataAdapter();
-            da2 = new SqlDataAdapter("select ID,name from PaidName where ID <> 0  order by ID ", con);
-            DataSet ds2 = new DataSet();
-            ds2 = new DataSet();
-            da2.Fill(ds2);
-            comboBox2.DataSource = ds2.Tables[0];
-            comboBox2.DisplayMember = "name";
-            comboBox2.ValueMember = "ID";
-            comboBox2.SelectedIndex = -1;
+                SqlDataAdapter da2 = new SqlDataAdapter();
+                da2 = new SqlDataAdapter("select ID,name from PaidName where ID <> 0  order by ID ", con);
+                DataSet ds2 = new DataSet();
+                ds2 = new DataSet();
+                da2.Fill(ds2);
+                comboBox2.DataSource = ds2.Tables[0];
+                comboBox2.DisplayMember = "name";
+                comboBox2.ValueMember = "ID";
+                comboBox2.SelectedIndex = -1;
 
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -188,7 +182,7 @@ namespace SCHOOL_DEV.UserControls
             try
             {
                 FlagMessge = false;
-                if(comboBox1.SelectedIndex==-1)
+                if (comboBox1.SelectedIndex == -1)
                 {
                     MessageBox.Show("يرجى تحديد اسم الطالب", "عملية غير مكتملة ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -206,17 +200,17 @@ namespace SCHOOL_DEV.UserControls
                     MessageBox.Show("يرجى تحديد قيمة الدفعة ", "عملية غير مكتملة ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                if(checkDefultPaid.Checked==true)
+                if (checkDefultPaid.Checked == true)
                 {
-                    if(PaidStudentData()==true)
+                    if (PaidStudentData() == true)
                     {
-                        if(SumPaidStudentData()==true)
+                        if (SumPaidStudentData() == true)
                         {
-                            
+
                             AddPaid();
                             if (FlagMessge == false)
                             {
-                                MessageBox.Show("تم الدفع بنجاح", "عملية صحيحة", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                                
+                                MessageBox.Show("تم الدفع بنجاح", "عملية صحيحة", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             }
                             textBox19.Text = "";
                         }
@@ -231,7 +225,7 @@ namespace SCHOOL_DEV.UserControls
                     }
                     else
                     {
-                        MessageBox.Show("فشل عملية الحفظ التلقائي ، يرجى تحديد الدفعة يدويا للحفظ","لم تتم عملية الحفظ",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("فشل عملية الحفظ التلقائي ، يرجى تحديد الدفعة يدويا للحفظ", "لم تتم عملية الحفظ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         checkDefultPaid.Checked = false;
                         checkDefultPaid.Enabled = false;
                         comboBox2.Enabled = true;
@@ -245,9 +239,10 @@ namespace SCHOOL_DEV.UserControls
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = @"INSERT INTO Paid
-                         (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                     cmd.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                    cmd.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                     cmd.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                     cmd.Parameters.AddWithValue("@IDPaid", comboBox2.SelectedValue);
                     cmd.Parameters.AddWithValue("@NamePaid", comboBox2.Text);
@@ -260,9 +255,9 @@ namespace SCHOOL_DEV.UserControls
                     MessageBox.Show("تم الدفع بنجاح", "عملية صحيحة", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     textBox19.Text = "";
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("لم تتم عملية الحفظ الرجاء إعادة المحاولة مرة اخرى", "عملية غير صحيحة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -275,11 +270,11 @@ namespace SCHOOL_DEV.UserControls
 
         private void AddPaid()
         {
-            if(textBox19.Text!=string.Empty)
+            if (textBox19.Text != string.Empty)
             {
-                double P1= ALLPaid1 - SumALLPaid1;
-                
-                if(Convert.ToDouble(textBox19.Text) > (P1))
+                double P1 = ALLPaid1 - SumALLPaid1;
+
+                if (Convert.ToDouble(textBox19.Text) > (P1))
                 {
                     if (ALLPaid1 != SumALLPaid1)
                     {
@@ -288,9 +283,10 @@ namespace SCHOOL_DEV.UserControls
                         SqlCommand cmd = con.CreateCommand();
                         cmd.CommandType = CommandType.Text;
                         cmd.CommandText = @"INSERT INTO Paid
-                         (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                         cmd.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                        cmd.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                         cmd.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                         cmd.Parameters.AddWithValue("@IDPaid", "1");
                         cmd.Parameters.AddWithValue("@NamePaid", "الدفعة الأولى");
@@ -302,7 +298,7 @@ namespace SCHOOL_DEV.UserControls
 
                     }
                     double D2 = (Convert.ToDouble(textBox19.Text) - P1);
-                    double P2 = Paid2-SumPaid2;
+                    double P2 = Paid2 - SumPaid2;
                     if (D2 > P2)
                     {
                         if (Paid2 != SumPaid2)
@@ -312,9 +308,10 @@ namespace SCHOOL_DEV.UserControls
                             SqlCommand cmd2 = con.CreateCommand();
                             cmd2.CommandType = CommandType.Text;
                             cmd2.CommandText = @"INSERT INTO Paid
-                         (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                             cmd2.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                            cmd2.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                             cmd2.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                             cmd2.Parameters.AddWithValue("@IDPaid", "2");
                             cmd2.Parameters.AddWithValue("@NamePaid", "الدفعة الثانية");
@@ -335,9 +332,10 @@ namespace SCHOOL_DEV.UserControls
                                 SqlCommand cmd3 = con.CreateCommand();
                                 cmd3.CommandType = CommandType.Text;
                                 cmd3.CommandText = @"INSERT INTO Paid
-                            (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                 cmd3.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                cmd3.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                 cmd3.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                 cmd3.Parameters.AddWithValue("@IDPaid", "3");
                                 cmd3.Parameters.AddWithValue("@NamePaid", "الدفعة الثالثة");
@@ -358,9 +356,10 @@ namespace SCHOOL_DEV.UserControls
                                     SqlCommand cmd4 = con.CreateCommand();
                                     cmd4.CommandType = CommandType.Text;
                                     cmd4.CommandText = @"INSERT INTO Paid
-                                (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                     cmd4.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                    cmd4.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                     cmd4.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                     cmd4.Parameters.AddWithValue("@IDPaid", "4");
                                     cmd4.Parameters.AddWithValue("@NamePaid", "الدفعة الرابعة");
@@ -381,9 +380,10 @@ namespace SCHOOL_DEV.UserControls
                                         SqlCommand cmd5 = con.CreateCommand();
                                         cmd5.CommandType = CommandType.Text;
                                         cmd5.CommandText = @"INSERT INTO Paid
-                                    (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                    VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                         cmd5.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                        cmd5.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                         cmd5.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                         cmd5.Parameters.AddWithValue("@IDPaid", "5");
                                         cmd5.Parameters.AddWithValue("@NamePaid", "الدفعة الخامسة");
@@ -405,9 +405,10 @@ namespace SCHOOL_DEV.UserControls
                                             SqlCommand cmd6 = con.CreateCommand();
                                             cmd6.CommandType = CommandType.Text;
                                             cmd6.CommandText = @"INSERT INTO Paid
-                                         (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                             cmd6.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                            cmd6.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                             cmd6.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                             cmd6.Parameters.AddWithValue("@IDPaid", "6");
                                             cmd6.Parameters.AddWithValue("@NamePaid", "الدفعة السادسة");
@@ -428,9 +429,10 @@ namespace SCHOOL_DEV.UserControls
                                                 SqlCommand cmd7 = con.CreateCommand();
                                                 cmd7.CommandType = CommandType.Text;
                                                 cmd7.CommandText = @"INSERT INTO Paid
-                                            (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                                VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                                 cmd7.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                                cmd7.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                                 cmd7.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                                 cmd7.Parameters.AddWithValue("@IDPaid", "7");
                                                 cmd7.Parameters.AddWithValue("@NamePaid", "الدفعة السابعة");
@@ -451,9 +453,10 @@ namespace SCHOOL_DEV.UserControls
                                                     SqlCommand cmd8 = con.CreateCommand();
                                                     cmd8.CommandType = CommandType.Text;
                                                     cmd8.CommandText = @"INSERT INTO Paid
-                                                    (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                                      VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                                     cmd8.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                                    cmd8.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                                     cmd8.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                                     cmd8.Parameters.AddWithValue("@IDPaid", "8");
                                                     cmd8.Parameters.AddWithValue("@NamePaid", "الدفعة الثامنة");
@@ -476,9 +479,10 @@ namespace SCHOOL_DEV.UserControls
                                                         SqlCommand cmd9 = con.CreateCommand();
                                                         cmd9.CommandType = CommandType.Text;
                                                         cmd9.CommandText = @"INSERT INTO Paid
-                                                    (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                                      VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                                         cmd9.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                                        cmd9.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                                         cmd9.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                                         cmd9.Parameters.AddWithValue("@IDPaid", "9");
                                                         cmd9.Parameters.AddWithValue("@NamePaid", "الدفعة التاسعة");
@@ -488,9 +492,9 @@ namespace SCHOOL_DEV.UserControls
                                                         cmd9.ExecuteNonQuery();
                                                         con.Close();
                                                     }
-                                                    else if(ALLPaid1 == SumALLPaid1 && Paid2==SumPaid2 && Paid3 == SumPaid3 && Paid4 == SumPaid4 && Paid5 == SumPaid5 && Paid6 == SumPaid6 && Paid7 == SumPaid7 && Paid8 == SumPaid8 && Paid9 == SumPaid9)
+                                                    else if (ALLPaid1 == SumALLPaid1 && Paid2 == SumPaid2 && Paid3 == SumPaid3 && Paid4 == SumPaid4 && Paid5 == SumPaid5 && Paid6 == SumPaid6 && Paid7 == SumPaid7 && Paid8 == SumPaid8 && Paid9 == SumPaid9)
                                                     {
-                                                        
+
                                                         MessageBox.Show("عذرا أقساط هذا الطالب مكتملة", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                                         FlagMessge = true;
                                                         return;
@@ -510,9 +514,10 @@ namespace SCHOOL_DEV.UserControls
                                                     SqlCommand cmd9 = con.CreateCommand();
                                                     cmd9.CommandType = CommandType.Text;
                                                     cmd9.CommandText = @"INSERT INTO Paid
-                                                    (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                                         VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                                     cmd9.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                                    cmd9.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                                     cmd9.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                                     cmd9.Parameters.AddWithValue("@IDPaid", "9");
                                                     cmd9.Parameters.AddWithValue("@NamePaid", "الدفعة التاسعة");
@@ -534,9 +539,10 @@ namespace SCHOOL_DEV.UserControls
                                                 SqlCommand cmd8 = con.CreateCommand();
                                                 cmd8.CommandType = CommandType.Text;
                                                 cmd8.CommandText = @"INSERT INTO Paid
-                                                    (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                                         VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                                 cmd8.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                                cmd8.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                                 cmd8.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                                 cmd8.Parameters.AddWithValue("@IDPaid", "8");
                                                 cmd8.Parameters.AddWithValue("@NamePaid", "الدفعة الثامنة");
@@ -557,9 +563,10 @@ namespace SCHOOL_DEV.UserControls
                                             SqlCommand cmd7 = con.CreateCommand();
                                             cmd7.CommandType = CommandType.Text;
                                             cmd7.CommandText = @"INSERT INTO Paid
-                                               (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                                    VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                             cmd7.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                            cmd7.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                             cmd7.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                             cmd7.Parameters.AddWithValue("@IDPaid", "7");
                                             cmd7.Parameters.AddWithValue("@NamePaid", "الدفعة السابعة");
@@ -581,9 +588,10 @@ namespace SCHOOL_DEV.UserControls
                                         SqlCommand cmd6 = con.CreateCommand();
                                         cmd6.CommandType = CommandType.Text;
                                         cmd6.CommandText = @"INSERT INTO Paid
-                                        (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                        VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                         cmd6.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                        cmd6.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                         cmd6.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                         cmd6.Parameters.AddWithValue("@IDPaid", "6");
                                         cmd6.Parameters.AddWithValue("@NamePaid", "الدفعة السادسة");
@@ -604,9 +612,10 @@ namespace SCHOOL_DEV.UserControls
                                     SqlCommand cmd5 = con.CreateCommand();
                                     cmd5.CommandType = CommandType.Text;
                                     cmd5.CommandText = @"INSERT INTO Paid
-                                    (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                    VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                     cmd5.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                    cmd5.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                     cmd5.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                     cmd5.Parameters.AddWithValue("@IDPaid", "5");
                                     cmd5.Parameters.AddWithValue("@NamePaid", "الدفعة الخامسة");
@@ -628,9 +637,10 @@ namespace SCHOOL_DEV.UserControls
                                 SqlCommand cmd4 = con.CreateCommand();
                                 cmd4.CommandType = CommandType.Text;
                                 cmd4.CommandText = @"INSERT INTO Paid
-                                (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                                 VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                                 cmd4.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                                cmd4.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                                 cmd4.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                                 cmd4.Parameters.AddWithValue("@IDPaid", "4");
                                 cmd4.Parameters.AddWithValue("@NamePaid", "الدفعة الرابعة");
@@ -652,9 +662,10 @@ namespace SCHOOL_DEV.UserControls
                             SqlCommand cmd3 = con.CreateCommand();
                             cmd3.CommandType = CommandType.Text;
                             cmd3.CommandText = @"INSERT INTO Paid
-                             (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                             VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                             cmd3.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                            cmd3.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                             cmd3.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                             cmd3.Parameters.AddWithValue("@IDPaid", "3");
                             cmd3.Parameters.AddWithValue("@NamePaid", "الدفعة الثالثة");
@@ -667,17 +678,18 @@ namespace SCHOOL_DEV.UserControls
                         }
 
                     }
-                    else if(D2 <= (Paid2 - SumPaid2))
+                    else if (D2 <= (Paid2 - SumPaid2))
                     {
-                        if(D2>0)
-                        con.Open();
+                        if (D2 > 0)
+                            con.Open();
 
                         SqlCommand cmd2 = con.CreateCommand();
                         cmd2.CommandType = CommandType.Text;
                         cmd2.CommandText = @"INSERT INTO Paid
-                         (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                         cmd2.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                        cmd2.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                         cmd2.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                         cmd2.Parameters.AddWithValue("@IDPaid", "2");
                         cmd2.Parameters.AddWithValue("@NamePaid", "الدفعة الثانية");
@@ -689,17 +701,18 @@ namespace SCHOOL_DEV.UserControls
 
                     }
                 }
-                else if(Convert.ToDouble(textBox19.Text) <= (ALLPaid1 - SumALLPaid1))
+                else if (Convert.ToDouble(textBox19.Text) <= (ALLPaid1 - SumALLPaid1))
                 {
-                    if(Convert.ToDouble(textBox19.Text) > 0)
-                    con.Open();
+                    if (Convert.ToDouble(textBox19.Text) > 0)
+                        con.Open();
 
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = @"INSERT INTO Paid
-                         (ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
-                            VALUES        (@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
+                         (BondNo,ID_Student, Name_Student, IDPaid, NamePaid, AmountPaid, DateAmount , YaerSemesterID)
+                            VALUES        (@BondNo,@ID_Student, @Name_Student, @IDPaid, @NamePaid, @AmountPaid, @DateAmount , @YaerSemesterID)";
                     cmd.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
+                    cmd.Parameters.AddWithValue("@BondNo", txtBondNo.Text);
                     cmd.Parameters.AddWithValue("@Name_Student", comboBox1.Text);
                     cmd.Parameters.AddWithValue("@IDPaid", "1");
                     cmd.Parameters.AddWithValue("@NamePaid", "الدفعة الأولى");
@@ -714,24 +727,24 @@ namespace SCHOOL_DEV.UserControls
         }
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
-        
+
         private void ADD_Paid_MouseClick(object sender, MouseEventArgs e)
         {
-        
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if(comboBox1.SelectedIndex > -1 && count!=1)
+                if (comboBox1.SelectedIndex > -1 && count != 1)
                 {
                     con.Open();
                     SqlCommand cmd = con.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = @"select ID,IDPaid,NamePaid,AmountPaid,DateAmount from Paid where ID_Student=@ID_Student order by IDPaid";
+                    cmd.CommandText = @"select ID,IDPaid,NamePaid,AmountPaid,DateAmount,BondNo from Paid where ID_Student=@ID_Student order by IDPaid";
 
                     cmd.Parameters.AddWithValue("@ID_Student", comboBox1.SelectedValue);
                     cmd.ExecuteNonQuery();
@@ -748,22 +761,22 @@ namespace SCHOOL_DEV.UserControls
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               
+
             }
             finally
             {
 
             }
 
-            
+
         }
         private void RestAmount()
         {
             try
             {
-                if(textBox_s.Text!=string.Empty && textBox_K.Text!=string.Empty)
+                if (textBox_s.Text != string.Empty && textBox_K.Text != string.Empty)
                 {
                     double TotalSumStudent = Convert.ToDouble(textBox_s.Text);
                     double TotalAmount = Convert.ToDouble(textBox_K.Text);
@@ -772,7 +785,7 @@ namespace SCHOOL_DEV.UserControls
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -818,7 +831,7 @@ namespace SCHOOL_DEV.UserControls
                     textBox_s.Text = dr["TotalSumStudent"].ToString();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 textBox_s.Text = "0";
             }
@@ -957,13 +970,13 @@ namespace SCHOOL_DEV.UserControls
             //    if(dataGridView1.Rows.Count>0)
             //    {
             //        addTotalRow();
-                    
+
             //    }
-                
+
             //}
             //catch (Exception ex)
             //{
-               
+
             //}
             //finally
             //{
@@ -981,7 +994,7 @@ namespace SCHOOL_DEV.UserControls
                 TableTotal += Convert.ToDouble(dataGridView1.Rows[i].Cells[clmAmountPaid.Name].Value);
             }
             //dataGridView1.Rows.("","","المجموع",TableTotal,"","","","");
-            this.dataGridView1.Rows.Add("", "", "المجموع", TableTotal, "","","","");
+            this.dataGridView1.Rows.Add("", "", "المجموع", TableTotal, "", "", "", "");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -991,7 +1004,7 @@ namespace SCHOOL_DEV.UserControls
 
         private void checkDefultPaid_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkDefultPaid.Checked==true)
+            if (checkDefultPaid.Checked == true)
             {
                 comboBox2.Enabled = false;
             }
@@ -1030,9 +1043,9 @@ namespace SCHOOL_DEV.UserControls
                 MessageBox.Show("تم الحذف بنجاح", "عملية صحيحة", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 textBox19.Text = "";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message+"لم تتم عملية الحذف", "عملية خاطئة", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + "لم تتم عملية الحذف", "عملية خاطئة", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
