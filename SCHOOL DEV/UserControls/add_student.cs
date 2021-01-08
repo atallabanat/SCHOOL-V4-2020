@@ -118,6 +118,105 @@ namespace SCHOOL_DEV.UserControls
             }
 
         }
+
+        public void selectGrid2()
+        {
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from student where IDNumber=@IDNumber and YaerSemesterID=@YaerSemesterID", con);
+                cmd.Parameters.AddWithValue("@IDNumber", text_IDNumber.Text);
+                cmd.Parameters.AddWithValue("@YaerSemesterID", Program.ID_Year);
+                SqlDataReader dr;
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    text_Name.Text = dr["Name"].ToString();
+                    combo_gender.SelectedValue = dr["gender"].ToString();
+                    date_registration.Value = Convert.ToDateTime(dr["Date_Registration"].ToString());
+                    combo_Class.SelectedValue = dr["IDclass"].ToString();
+                    text_IDNumber.Text = dr["IDNumber"].ToString();
+                    txtContractNumber.Text = dr["ContractNumber"].ToString();
+                    text_Status.Text = dr["Status"].ToString();
+                    text_PhoneDAD.Text = dr["PhoneDAD"].ToString();
+                    text_PhoneMAM.Text = dr["PhoneMAM"].ToString();
+                    int Social = Convert.ToInt32(dr["Social"].ToString());
+                    if (Social == 1)
+                    {
+                        radio_married_1.Checked = true;
+                    }
+                    else if (Social == 2)
+                    {
+                        radio_separate_2.Checked = true;
+                    }
+                    else if (Social == 3)
+                    {
+                        radio_orphan_3.Checked = true;
+                    }
+                    text_Profession_DAD.Text = dr["Profession_DAD"].ToString();
+                    text_Profession_MAM.Text = dr["Profession_MAM"].ToString();
+                    text_Paid1.Text = dr["Paid1"].ToString();
+                    textALLPaid1.Text = dr["ALLPaid1"].ToString();
+                    text_uniform.Text = dr["Paid_uniform"].ToString();
+                    text_Bock.Text = dr["Paid_Bock"].ToString();
+                    text_transport.Text = dr["Paid_transport"].ToString();
+                    text_Paid2.Text = dr["Paid2"].ToString();
+                    text_Paid3.Text = dr["Paid3"].ToString();
+                    text_Paid4.Text = dr["Paid4"].ToString();
+                    text_Paid5.Text = dr["Paid5"].ToString();
+                    text_Paid6.Text = dr["Paid6"].ToString();
+                    text_Paid7.Text = dr["Paid7"].ToString();
+                    text_Paid8.Text = dr["Paid8"].ToString();
+                    text_Paid9.Text = dr["Paid9"].ToString();
+                    textPaidAll.Text = dr["PaidAll"].ToString();
+                    textPaidTotal.Text = dr["PaidTotal"].ToString();
+                    Boolean Flag_uniform1 = Convert.ToBoolean(dr["Flag_uniform"].ToString());
+                    if (Flag_uniform1 == true)
+                    {
+                        check_uniform.Checked = true;
+                    }
+                    else
+                    {
+                        check_uniform.Checked = false;
+                    }
+
+                    Boolean Flag_Bock1 = Convert.ToBoolean(dr["Flag_Bock"].ToString());
+                    if (Flag_Bock == true)
+                    {
+                        check_Bock.Checked = true;
+                    }
+                    else
+                    {
+                        check_Bock.Checked = false;
+                    }
+
+                    Boolean Flag_transport1 = Convert.ToBoolean(dr["Flag_transport"].ToString());
+                    if (Flag_transport1 == true)
+                    {
+                        check_transport.Checked = true;
+                    }
+                    else
+                    {
+                        check_transport.Checked = false;
+                    }
+                    text_Region.Text = dr["Region"].ToString();
+                    text_place.Text = dr["place"].ToString();
+                    text_Street.Text = dr["Street"].ToString();
+                    text_Note.Text = dr["Note"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+
+                con.Close();
+            }
+
+        }
+
         private void add_student_Load(object sender, EventArgs e)
         {
             try
@@ -155,9 +254,14 @@ namespace SCHOOL_DEV.UserControls
         {
             try
             {
+                if (text_IDNumber.Text == string.Empty)
+                {
+                    msg.Alert("يرجى ادخال الرقم الوطني", Form_Alert.enumType.Warning);
+                    return;
+                }
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select name from student where name=@name and YaerSemesterID=@YaerSemesterID", con);
-                cmd.Parameters.AddWithValue("@name", text_Name.Text);
+                SqlCommand cmd = new SqlCommand("select IDNumber from student where IDNumber=@IDNumber and YaerSemesterID=@YaerSemesterID", con);
+                cmd.Parameters.AddWithValue("@IDNumber", text_IDNumber.Text);
                 cmd.Parameters.AddWithValue("@YaerSemesterID", Program.ID_Year);
                 SqlDataReader dr;
                 dr = cmd.ExecuteReader();
@@ -169,7 +273,7 @@ namespace SCHOOL_DEV.UserControls
                 }
                 if (count == 1)
                 {
-                    MessageBox.Show("الطالب  " + text_Name.Text.Trim() + "  موجود  ", "تكرار البيانات الطالب موجود !", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("موجود مسبقا  " + text_IDNumber.Text.Trim() + " الطالب صاحب الرقم الوطني", "تكرار البيانات الطالب موجود !", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     con.Close();
                     return;
                 }
@@ -433,6 +537,11 @@ namespace SCHOOL_DEV.UserControls
                 if (Convert.ToInt32(ID) < 1)
                 {
                     msg.Alert("يرجى تحديد اسم الطالب لعملية التعديل", Form_Alert.enumType.Warning);
+                    return;
+                }
+                if (text_IDNumber.Text == string.Empty)
+                {
+                    msg.Alert("يرجى ادخال الرقم الوطني", Form_Alert.enumType.Warning);
                     return;
                 }
                 if (text_Name.Text == "")
@@ -852,7 +961,45 @@ namespace SCHOOL_DEV.UserControls
                 textPaidTotal.Text = textPaidAll.Text;
             }
         }
+        private void SumAvgTotal()
+        {
+            try
+            {
+                if (textPaidTotal.Text != null && textPaidTotal.Text != "")
+                {
+                    double sum = Convert.ToDouble(textPaidTotal.Text);
+                    if (sum > 0)
+                    {
 
+                        double totalpaid1 = sum / 9;
+                        textALLPaid1.Text = string.Format("{0:0.00}", totalpaid1);
+                        double paid1all = Convert.ToDouble(textALLPaid1.Text) / 4;
+                        text_Paid1.Text = string.Format("{0:0.00}", paid1all);
+                        text_uniform.Text = string.Format("{0:0.00}", paid1all);
+                        text_Bock.Text = string.Format("{0:0.00}", paid1all);
+                        text_transport.Text = string.Format("{0:0.00}", paid1all);
+                        check_uniform.Checked = true;
+                        check_transport.Checked = true;
+                        check_Bock.Checked = true;
+                        text_Paid2.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid3.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid4.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid5.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid6.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid7.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid8.Text = string.Format("{0:0.00}", totalpaid1);
+                        text_Paid9.Text = string.Format("{0:0.00}", totalpaid1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+
+            }
+        }
         private void textALLPaid1_TextChanged(object sender, EventArgs e)
         {
             PaidAll();
@@ -1087,5 +1234,42 @@ namespace SCHOOL_DEV.UserControls
 
         }
 
+        private void text_IDNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (text_IDNumber.Text != string.Empty)
+                    {
+                        selectGrid2();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void textPaidTotal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textPaidTotal_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SumAvgTotal();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

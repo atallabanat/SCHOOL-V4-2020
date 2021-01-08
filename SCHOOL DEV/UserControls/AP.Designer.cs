@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkPaid = new System.Windows.Forms.CheckBox();
@@ -41,6 +41,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.combo_Student = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkStudent = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cmbClass = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.clmName_Student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Student = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmNamePaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,16 +66,13 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSumm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.combo_Student = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkStudent = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.clmDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmIDClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -148,19 +160,19 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmName_Student,
@@ -172,105 +184,31 @@
             this.Column3,
             this.Column4,
             this.clmSumm,
-            this.Column5});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 182);
+            this.Column5,
+            this.clmDate,
+            this.clmIDClass});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 236);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1133, 430);
+            this.dataGridView2.Size = new System.Drawing.Size(1133, 376);
             this.dataGridView2.TabIndex = 50;
-            // 
-            // clmName_Student
-            // 
-            this.clmName_Student.DataPropertyName = "Name_Student";
-            this.clmName_Student.HeaderText = "اسم الطالب";
-            this.clmName_Student.Name = "clmName_Student";
-            this.clmName_Student.ReadOnly = true;
-            // 
-            // ID_Student
-            // 
-            this.ID_Student.DataPropertyName = "ID_Student";
-            this.ID_Student.HeaderText = "ID_Student";
-            this.ID_Student.Name = "ID_Student";
-            this.ID_Student.ReadOnly = true;
-            this.ID_Student.Visible = false;
-            // 
-            // clmNamePaid
-            // 
-            this.clmNamePaid.DataPropertyName = "NamePaid";
-            this.clmNamePaid.HeaderText = "الدفعة";
-            this.clmNamePaid.Name = "clmNamePaid";
-            this.clmNamePaid.ReadOnly = true;
-            // 
-            // clmPaidDefult
-            // 
-            this.clmPaidDefult.DataPropertyName = "PaidDefult";
-            this.clmPaidDefult.HeaderText = "قيمة الدفعة";
-            this.clmPaidDefult.Name = "clmPaidDefult";
-            this.clmPaidDefult.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "PaidAmount";
-            this.Column1.HeaderText = "المدفوع";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "rest";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Brown;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Brown;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column2.HeaderText = "الباقي";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "PhoneDAD";
-            this.Column3.HeaderText = "رقم هاتف الأب";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "class";
-            this.Column4.HeaderText = "الصف الدراسي";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // clmSumm
-            // 
-            this.clmSumm.DataPropertyName = "PaidTotal";
-            this.clmSumm.HeaderText = "إجمالي الأقساط";
-            this.clmSumm.Name = "clmSumm";
-            this.clmSumm.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "AmountPaid2";
-            this.Column5.HeaderText = "إجمالي المدفوع";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
             // 
             // button2
             // 
@@ -335,16 +273,205 @@
             // 
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Location = new System.Drawing.Point(3, 118);
+            this.groupBox4.Location = new System.Drawing.Point(3, 172);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1133, 58);
             this.groupBox4.TabIndex = 53;
             this.groupBox4.TabStop = false;
             // 
+            // cmbClass
+            // 
+            this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClass.Enabled = false;
+            this.cmbClass.FormattingEnabled = true;
+            this.cmbClass.Location = new System.Drawing.Point(20, 19);
+            this.cmbClass.Name = "cmbClass";
+            this.cmbClass.Size = new System.Drawing.Size(180, 27);
+            this.cmbClass.TabIndex = 48;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(206, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 16);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "الصف الدراسي";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.cmbClass);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Font = new System.Drawing.Font("Arial", 11.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.Location = new System.Drawing.Point(3, 119);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1130, 59);
+            this.groupBox2.TabIndex = 54;
+            this.groupBox2.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(1030, 23);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(54, 23);
+            this.checkBox1.TabIndex = 46;
+            this.checkBox1.Text = "تفعيل";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 11.75F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(957, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 19);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "من تاريخ :";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(773, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(178, 26);
+            this.dateTimePicker1.TabIndex = 49;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Enabled = false;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(462, 19);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(178, 26);
+            this.dateTimePicker2.TabIndex = 51;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 11.75F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(646, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 19);
+            this.label5.TabIndex = 50;
+            this.label5.Text = "إلى تاريخ :";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(309, 21);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(54, 23);
+            this.checkBox2.TabIndex = 52;
+            this.checkBox2.Text = "تفعيل";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // clmName_Student
+            // 
+            this.clmName_Student.DataPropertyName = "Name_Student";
+            this.clmName_Student.HeaderText = "اسم الطالب";
+            this.clmName_Student.Name = "clmName_Student";
+            this.clmName_Student.ReadOnly = true;
+            // 
+            // ID_Student
+            // 
+            this.ID_Student.DataPropertyName = "ID_Student";
+            this.ID_Student.HeaderText = "ID_Student";
+            this.ID_Student.Name = "ID_Student";
+            this.ID_Student.ReadOnly = true;
+            this.ID_Student.Visible = false;
+            // 
+            // clmNamePaid
+            // 
+            this.clmNamePaid.DataPropertyName = "NamePaid";
+            this.clmNamePaid.HeaderText = "الدفعة";
+            this.clmNamePaid.Name = "clmNamePaid";
+            this.clmNamePaid.ReadOnly = true;
+            // 
+            // clmPaidDefult
+            // 
+            this.clmPaidDefult.DataPropertyName = "PaidDefult";
+            this.clmPaidDefult.HeaderText = "قيمة الدفعة";
+            this.clmPaidDefult.Name = "clmPaidDefult";
+            this.clmPaidDefult.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PaidAmount";
+            this.Column1.HeaderText = "المدفوع";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "rest";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Brown;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column2.HeaderText = "الباقي";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "PhoneDAD";
+            this.Column3.HeaderText = "رقم هاتف الأب";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "class";
+            this.Column4.HeaderText = "الصف الدراسي";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // clmSumm
+            // 
+            this.clmSumm.DataPropertyName = "PaidTotal";
+            this.clmSumm.HeaderText = "إجمالي الأقساط";
+            this.clmSumm.Name = "clmSumm";
+            this.clmSumm.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "AmountPaid2";
+            this.Column5.HeaderText = "إجمالي المدفوع";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // clmDate
+            // 
+            this.clmDate.DataPropertyName = "DateAmount";
+            this.clmDate.HeaderText = "تاريخ الدفعة";
+            this.clmDate.Name = "clmDate";
+            this.clmDate.ReadOnly = true;
+            // 
+            // clmIDClass
+            // 
+            this.clmIDClass.DataPropertyName = "IDClass";
+            this.clmIDClass.HeaderText = "IDClass";
+            this.clmIDClass.Name = "clmIDClass";
+            this.clmIDClass.ReadOnly = true;
+            this.clmIDClass.Visible = false;
+            // 
             // AP
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView2);
@@ -359,6 +486,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -376,6 +505,18 @@
         private System.Windows.Forms.CheckBox checkStudent;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.ComboBox combo_To;
+        public System.Windows.Forms.ComboBox combo_From;
+        public System.Windows.Forms.ComboBox combo_Student;
+        public System.Windows.Forms.ComboBox cmbClass;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmName_Student;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Student;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmNamePaid;
@@ -386,8 +527,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSumm;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        public System.Windows.Forms.ComboBox combo_To;
-        public System.Windows.Forms.ComboBox combo_From;
-        public System.Windows.Forms.ComboBox combo_Student;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmIDClass;
     }
 }

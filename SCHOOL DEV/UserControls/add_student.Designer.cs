@@ -67,6 +67,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtContractNumber = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.btn_View_Invoice_No = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.text_Profession_MAM = new System.Windows.Forms.TextBox();
@@ -111,8 +113,6 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
             this.text_Note = new System.Windows.Forms.TextBox();
-            this.txtContractNumber = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -243,6 +243,7 @@
             this.textPaidAll.Location = new System.Drawing.Point(683, 465);
             this.textPaidAll.MaxLength = 10;
             this.textPaidAll.Name = "textPaidAll";
+            this.textPaidAll.ReadOnly = true;
             this.textPaidAll.Size = new System.Drawing.Size(126, 23);
             this.textPaidAll.TabIndex = 6;
             this.textPaidAll.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
@@ -289,11 +290,12 @@
             // 
             // text_IDNumber
             // 
-            this.text_IDNumber.Location = new System.Drawing.Point(607, 23);
+            this.text_IDNumber.Location = new System.Drawing.Point(80, 135);
             this.text_IDNumber.MaxLength = 15;
             this.text_IDNumber.Name = "text_IDNumber";
-            this.text_IDNumber.Size = new System.Drawing.Size(273, 23);
+            this.text_IDNumber.Size = new System.Drawing.Size(150, 23);
             this.text_IDNumber.TabIndex = 2;
+            this.text_IDNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.text_IDNumber_KeyDown);
             this.text_IDNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // label7
@@ -320,7 +322,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(883, 25);
+            this.label2.Location = new System.Drawing.Point(236, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 16);
             this.label2.TabIndex = 10;
@@ -540,6 +542,8 @@
             // 
             this.tabPage1.Controls.Add(this.txtContractNumber);
             this.tabPage1.Controls.Add(this.label32);
+            this.tabPage1.Controls.Add(this.text_IDNumber);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.btn_View_Invoice_No);
             this.tabPage1.Controls.Add(this.text_Name);
             this.tabPage1.Controls.Add(this.label1);
@@ -560,6 +564,24 @@
             this.tabPage1.Text = "بيانات الطالب";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // txtContractNumber
+            // 
+            this.txtContractNumber.Location = new System.Drawing.Point(80, 73);
+            this.txtContractNumber.MaxLength = 30;
+            this.txtContractNumber.Name = "txtContractNumber";
+            this.txtContractNumber.Size = new System.Drawing.Size(150, 23);
+            this.txtContractNumber.TabIndex = 47;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label32.Location = new System.Drawing.Point(233, 76);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(74, 16);
+            this.label32.TabIndex = 49;
+            this.label32.Text = "رقم العقد :";
             // 
             // btn_View_Invoice_No
             // 
@@ -585,8 +607,6 @@
             this.tabPage5.Controls.Add(this.text_Profession_DAD);
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Controls.Add(this.text_Status);
-            this.tabPage5.Controls.Add(this.label2);
-            this.tabPage5.Controls.Add(this.text_IDNumber);
             this.tabPage5.Controls.Add(this.text_PhoneMAM);
             this.tabPage5.Controls.Add(this.label11);
             this.tabPage5.Controls.Add(this.label12);
@@ -973,6 +993,8 @@
             this.textPaidTotal.Name = "textPaidTotal";
             this.textPaidTotal.Size = new System.Drawing.Size(126, 23);
             this.textPaidTotal.TabIndex = 24;
+            this.textPaidTotal.TextChanged += new System.EventHandler(this.textPaidTotal_TextChanged);
+            this.textPaidTotal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textPaidTotal_KeyDown);
             this.textPaidTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPaidTotal_KeyPress);
             // 
             // label21
@@ -1066,24 +1088,6 @@
             this.text_Note.Name = "text_Note";
             this.text_Note.Size = new System.Drawing.Size(1009, 307);
             this.text_Note.TabIndex = 2;
-            // 
-            // txtContractNumber
-            // 
-            this.txtContractNumber.Location = new System.Drawing.Point(80, 73);
-            this.txtContractNumber.MaxLength = 30;
-            this.txtContractNumber.Name = "txtContractNumber";
-            this.txtContractNumber.Size = new System.Drawing.Size(150, 23);
-            this.txtContractNumber.TabIndex = 47;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label32.Location = new System.Drawing.Point(233, 76);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(74, 16);
-            this.label32.TabIndex = 49;
-            this.label32.Text = "رقم العقد :";
             // 
             // add_student
             // 

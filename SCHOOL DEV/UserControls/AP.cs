@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using DGVPrinterHelper;
+﻿using SCHOOL_DEV.Report;
+using System;
 using System.Configuration;
-using SCHOOL_DEV.Report;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace SCHOOL_DEV.UserControls
 {
@@ -30,7 +23,7 @@ namespace SCHOOL_DEV.UserControls
         {
             try
             {
-                if(checkStudent.Checked==true)
+                if (checkStudent.Checked == true)
                 {
                     FlagStudent = 1;
                     combo_Student.Enabled = false;
@@ -60,12 +53,31 @@ namespace SCHOOL_DEV.UserControls
                 {
                     FlagPaid = 1;
                     combo_From.Enabled = true;
-                    combo_To.Enabled = true;                   
+                    combo_To.Enabled = true;
                 }
             }
             catch
             {
                 FlagPaid = 0;
+            }
+        }
+        void LoadClass()
+        {
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                da = new SqlDataAdapter("select ID,Name from class where YaerSemesterID=" + Program.ID_Year + "", con);
+                DataSet ds = new DataSet();
+                ds = new DataSet();
+                da.Fill(ds);
+                cmbClass.DataSource = ds.Tables[0];
+                cmbClass.DisplayMember = "Name";
+                cmbClass.ValueMember = "ID";
+                cmbClass.SelectedIndex = -1;
+            }
+            catch
+            {
+
             }
         }
         private void AP_Load(object sender, EventArgs e)
@@ -74,6 +86,7 @@ namespace SCHOOL_DEV.UserControls
             {
                 VFlagPaid();
                 VFlagStudent();
+                LoadClass();
                 SqlDataAdapter da = new SqlDataAdapter();
                 da = new SqlDataAdapter("select * from PaidName where ID <> 0 ", con);
                 DataSet ds = new DataSet();
@@ -96,7 +109,7 @@ namespace SCHOOL_DEV.UserControls
                 combo_To.SelectedIndex = -1;
 
                 SqlDataAdapter da3 = new SqlDataAdapter();
-                da3 = new SqlDataAdapter("select ID,Name from student where YaerSemesterID="+Program.ID_Year+" ", con);
+                da3 = new SqlDataAdapter("select ID,Name from student where YaerSemesterID=" + Program.ID_Year + " ", con);
                 DataSet ds3 = new DataSet();
                 ds3 = new DataSet();
                 da3.Fill(ds3);
@@ -160,6 +173,24 @@ namespace SCHOOL_DEV.UserControls
                     }
                 }
                 cmd.Parameters.AddWithValue("@YaerSemesterID", Program.ID_Year);
+                if (!checkBox1.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@DateFrom", DateTime.Now.AddYears( - 200));
+                    cmd.Parameters.AddWithValue("@DateTo", DateTime.Now);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@DateFrom", dateTimePicker1.Value);
+                    cmd.Parameters.AddWithValue("@DateTo", dateTimePicker2.Value);
+                }
+                if (!checkBox2.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@IDClass", 0);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@IDClass", cmbClass.SelectedValue);
+                }
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -186,6 +217,46 @@ namespace SCHOOL_DEV.UserControls
         {
             Report_AP report = new Report_AP();
             report.Show();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (checkBox1.Checked)
+                {
+                    dateTimePicker1.Enabled = true;
+                    dateTimePicker2.Enabled = true;
+                }
+                else
+                {
+                    dateTimePicker1.Enabled = false;
+                    dateTimePicker2.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (checkBox2.Checked)
+                {
+                    cmbClass.Enabled = true;
+                }
+                else
+                {
+                    cmbClass.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
